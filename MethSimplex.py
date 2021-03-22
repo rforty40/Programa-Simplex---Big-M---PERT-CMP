@@ -160,9 +160,10 @@ class MethSimplex(QMainWindow):
                     self.tituloMetodo = "REPORTE MÉTODO BIG M"
 
         elif boton == self.botonIteracion:
-            
+            #aa=True
             if self.comboMetodo.currentIndex() == 0 or (self.comboMetodo.currentIndex() == 1 and self.comboObjetivo.currentIndex() == 1):
                 if self.seguirIteracionesSimplex() == True:
+                #if aa:
                     self.iteraciones()
                 else:
                     self.botonPdf.setVisible(True)
@@ -978,11 +979,11 @@ class MethSimplex(QMainWindow):
         numFilas = self.numRestricciones + 4
         stringSig = ""
         siguiente = float(0)
-        claseM = ClaseM.ClaseM(Fraccion.Fraccion(0, 0), "M")
+        #claseM = ClaseM.ClaseM(Fraccion.Fraccion(0, 0), "M")
         fraccionSig = Fraccion.Fraccion(0, 0)
-        for i in range(2, (numColumnas-2), 1):
-            stringSig = claseM.obtenerValorSinM(
-                self.tablaU.item(numFilas-1, i).text())
+        for i in range(2, (numColumnas-1), 1):
+            #stringSig = claseM.obtenerValorSinM(self.tablaU.item(numFilas-1, i).text())
+            stringSig = self.tablaU.item(numFilas-1, i).text()
             if fraccionSig.posicionBarra(stringSig) == -1:
                 siguiente = float(stringSig)
             else:
@@ -1002,7 +1003,7 @@ class MethSimplex(QMainWindow):
         siguiente = float(0)
         claseM = ClaseM.ClaseM(Fraccion.Fraccion(0, 0), "M")
         fraccionSig = Fraccion.Fraccion(0, 0)
-        for i in range(2, (numColumnas-2), 1):
+        for i in range(2, (numColumnas-1), 1):
             stringSig = claseM.obtenerValorSinM(
                 self.tablaU.item(numFilas-1, i).text())
             if fraccionSig.posicionBarra(stringSig) == -1:
